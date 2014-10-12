@@ -1,0 +1,21 @@
+questions = {
+	"strong": "Do ye like yer drinks strong, eh?",
+	"salty": "Do ye like it with a wee salty tang?",
+	"bitter": "Arrr ye a lubber what likes it bitter?",
+	"sweet": "Would ye like some sweet with yer poison, yarr?",
+	"fruity": "Are ye one for a fruity finish, matey?"
+}
+
+ingredients = {
+	"strong": ["glug o' rum", "slug o' whisky", "splash of gin"],
+	"salty": ["olive on a stick", "salt-dusted rim", "rasher o' bacon"],
+	"bitter": ["shake of bitters", "splash of tonic", "twist o' lemon peel"],
+	"sweet": ["sugar cube", "spoonful of honey", "splash o' cola"],
+	"fruity": ["slice of orange", "dash of cassis", "cherry on top"]
+}
+
+def yer_preference():
+	for key, value in questions.iteritems():
+		print "%r" %(value)
+
+yer_preference()

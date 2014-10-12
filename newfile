@@ -1,0 +1,7 @@
+import pirate
+
+print __name__
+
+print 'arr what'
+
+pirate.arrr()
