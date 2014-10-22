@@ -28,7 +28,7 @@ sunday = 0
 with open('sweep.csv') as f:
 	reader = csv.reader(f)
 	for row in reader:
-		day_of_week = row['WEEKDAY']
+		day_of_week = row['WEE']
 		if day_of_week == 'Mon':
 			monday +=1
 		if day_of_week == 'Tues':
