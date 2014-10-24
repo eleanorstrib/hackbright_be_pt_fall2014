@@ -2,15 +2,15 @@
 # pip install requests-oauthlib
 
 # API secrets. NEVER share these with anyone!
-CLIENT_KEY = "TFiOUL7xr1XKvFDsWuwV1mnOE"
-CLIENT_SECRET = "nCdbUZzzu9BWl8545dUaUz1rduRizJ8Qr0CrKXKSvEWc36a7wg"
+CLIENT_KEY = "CAYvdSGUp6TNUBeokQ1puP8kO"
+CLIENT_SECRET = "4Jtog1pmPk7tRWDBizxqQ1H2Fy11A29OlOmLsape2fvKQswkNl"
 
 
 API_URL = "https://api.twitter.com"
 REQUEST_TOKEN_URL = API_URL + "/oauth/request_token"
 AUTHORIZE_URL = API_URL + "/oauth/authorize?oauth_token={request_token}"
 ACCESS_TOKEN_URL = API_URL + "/oauth/access_token"
-TIMELINE_URL = API_URL + "/1.1/statuses/home_timeline.json"
+TWEET_URL = API_URL + "/1.1/statuses/update.json"
 
 
 
@@ -62,14 +62,14 @@ def get_user_authorization(request_token):
 
 def store_credentials(access_token, access_secret):
     """ Save our access credentials in a json file """
-    with open("access.json", "w") as f:
+    with open("access_test.json", "w") as f:
         json.dump({"access_token": access_token,
                    "access_secret": access_secret}, f)
 
 
 def get_stored_credentials():
     """ Try to retrieve stored access credentials from a json file """
-    with open("access.json", "r") as f:
+    with open("access_test.json", "r") as f:
         credentials = json.load(f)
         return credentials["access_token"], credentials["access_secret"]
 
@@ -97,8 +97,9 @@ def authorize():
 def main():
     """ Main function """
     auth = authorize()
+    data = { 'status' : 'Can I get a weather forecast @eleanorstrib?'}
 
-    response = requests.get(TIMELINE_URL, auth=auth)
+    response = requests.post(TWEET_URL, data=data, auth=auth)
     print json.dumps(response.json(), indent=4)
 
 

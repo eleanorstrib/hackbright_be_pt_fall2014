@@ -2,9 +2,8 @@
 # pip install requests-oauthlib
 
 # API secrets. NEVER share these with anyone!
-CLIENT_KEY = "TFiOUL7xr1XKvFDsWuwV1mnOE"
-CLIENT_SECRET = "nCdbUZzzu9BWl8545dUaUz1rduRizJ8Qr0CrKXKSvEWc36a7wg"
-
+CLIENT_KEY = "CAYvdSGUp6TNUBeokQ1puP8kO"
+CLIENT_SECRET = "4Jtog1pmPk7tRWDBizxqQ1H2Fy11A29OlOmLsape2fvKQswkNl"
 
 API_URL = "https://api.twitter.com"
 REQUEST_TOKEN_URL = API_URL + "/oauth/request_token"
