@@ -2,8 +2,10 @@
 # pip install requests-oauthlib
 
 # API secrets. NEVER share these with anyone!
-CLIENT_KEY = "CAYvdSGUp6TNUBeokQ1puP8kO"
-CLIENT_SECRET = "4Jtog1pmPk7tRWDBizxqQ1H2Fy11A29OlOmLsape2fvKQswkNl"
+
+# import twitter_oauth_testeleanor
+CLIENT_KEY = "vfGC5EWr1k2R8K1fHgAckJ0Gx"
+CLIENT_SECRET = "j1338xMxc9dpQVom59mn3qkLVSKdAL02KJaZHNiW7JEyEWluYP"
 
 
 API_URL = "https://api.twitter.com"
@@ -94,17 +96,37 @@ def authorize():
                    resource_owner_secret=access_secret)
     return oauth
 
+def find_relevant_mentions(handles,words):
+    list_handles = {}
+    handle =  user['user']
+    words = user['text']
+    for mention in handles:
+        if words == 'Can I get a weather forecast @eleanorstrib?':
+            list_handles.append(handle)
+            print handle
+        else: 
+            continue
+    return list_handles
 
 
 def main():
     """ Main function """
     auth = authorize()
-    data = { 'status' : 'Can I get a weather forecast @eleanorstrib?'}
+    # data = { 'status' : '@{}, forecast is: {}'}.format()
 
-    response = requests.post(TWEET_URL, data=data, auth=auth)
-    print json.dumps(response.json(), indent=4)
+    find_mentions = requests.get(MENTION_URL, auth=auth)
+    print json.dumps(find_mentions.json(), indent=4)
+
+    # search_mentions = requests.get(SEARCH_URL, auth=auth)
+    # print json.dumps(search_mentions.json(), indent=4)
+
+    # send_weather = requests.post(SEARCH_URL, data=data2, auth=auth)
+    # print json.dumps(send_weather.json(), indent=4)
 
 
 if __name__=="__main__":
     main()
+
+
+
 
